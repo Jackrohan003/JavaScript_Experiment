@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Array Methods</h2> 
+
+<h2>push()</h2>
+
+<p>The push() method appends a new element to an array.</p>
+
+
+<input type="text" name="fruit" id="getName" >
+<button onclick="myFunction()">Add It</button>
+
+<button onclick="removeLast()">Pop Last element</button>
+
+
+<p id="demo"></p>
+
+<script>
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits;
+
+function myFunction() {
+  
+  let fname = document.getElementById("getName").value;
+
+  if(fname!==undefined && fname!=='')
+   fruits.push(fname);
+  document.getElementById("demo").innerHTML = fruits;
+}
+
+function removeLast()
+{
+	fruits.pop();
+	document.getElementById("demo").innerHTML = fruits;
+}
+
+</script>
+
+</body>
+</html>
