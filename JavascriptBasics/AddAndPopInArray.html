@@ -10,9 +10,11 @@
 
 
 <input type="text" name="fruit" id="getName" >
-<button onclick="myFunction()">Add It</button>
-
+<button onclick="pushToBack()">Push to the Last</button>
+<button onclick="addToBegining()">Add to the Front</button>
 <button onclick="removeLast()">Pop Last element</button>
+<button onclick="removeFront()">Remove First element</button>
+
 
 
 <p id="demo"></p>
@@ -21,7 +23,7 @@
 var fruits = ["Banana", "Orange", "Apple", "Mango"];
 document.getElementById("demo").innerHTML = fruits;
 
-function myFunction() {
+function pushToBack() {
   
   let fname = document.getElementById("getName").value;
 
@@ -35,6 +37,23 @@ function removeLast()
 	fruits.pop();
 	document.getElementById("demo").innerHTML = fruits;
 }
+
+function addToBegining()
+{
+	let fname = document.getElementById("getName").value;
+
+  if(fname!==undefined && fname!=='')
+   fruits.unshift(fname);
+  document.getElementById("demo").innerHTML = fruits;
+
+}
+
+function removeFront()
+{
+    fruits.shift();
+	document.getElementById("demo").innerHTML = fruits;
+}
+
 
 </script>
 
