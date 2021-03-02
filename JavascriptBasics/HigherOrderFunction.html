@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            const companies= [
+            {name: "Company One", category: "Finance", start: 1981, end: 2004, employees: 1000},
+            {name: "Company Two", category: "Retail", start: 1992, end: 2008, employees: 2000},
+            {name: "Company Three", category: "Auto", start: 1999, end: 2007, employees: 500},
+            {name: "Company Four", category: "Retail", start: 1989, end: 2010, employees: 100},
+            {name: "Company Five", category: "Technology", start: 2009, end: 2014, employees:
+            10000},
+            {name: "Company Six", category: "Finance", start: 1987, end: 2010, employees: 200},
+            {name: "Company Seven", category: "Auto", start: 1986, end: 1996, employees: 1000},
+            {name: "Company Eight", category: "Technology", start: 2011, end: 2016, employees:
+            1000},
+            {name: "Company Nine", category: "Retail", start: 1981, end: 1989, employees: 1000}
+            ];
+
+            function printCompany()
+            {
+                let textnode="";                                  
+                companies.forEach(function(company){
+                    textnode += " Name -- " +company["name"] + " || Category -- " + company["category"] +"<br/>";
+                });
+                document.getElementById("print").innerHTML = textnode; 
+            }
+
+            function printRetailCompany()
+            {
+                let textnode="";          
+                const result = companies.filter(company => company["category"]==="Retail");                      
+                result.forEach(function(company){
+                    textnode += " Name -- " +company["name"] + " || Category -- " + company["category"] +"<br/>";
+                });
+                document.getElementById("print").innerHTML = textnode; 
+            }
+
+            function print80Company()
+            {
+                let textnode="";      
+                const result = companies.filter(company => company["start"]>="1980" && company["start"] < 1990);                            
+                result.forEach(function(company){
+                    textnode += " Name -- " +company["name"] + " || Start Year -- " + company["start"] +"<br/>";
+                });
+                document.getElementById("print").innerHTML = textnode; 
+            }
+
+            function printNames()
+            {
+                let textnode="";                                  
+                companies.forEach(function(company){
+                    textnode += company["name"] + "<br/>";
+                });
+                document.getElementById("print").innerHTML = textnode; 
+            }
+
+            function printNamesWithDuration()
+            {
+                let textnode="";                                  
+                companies.forEach(function(company){
+                    textnode += company["name"] + "  [ " + company["start"] + " - " + company["end"] + " ]"+ "<br/>";
+                });
+                document.getElementById("print").innerHTML = textnode; 
+            }
+
+            function sortByStartYear()
+            {
+                let textnode=""; 
+                companies.sort(function(a,b){return a.start - b.start} );                                 
+                companies.forEach(function(company){
+                    textnode += company["name"] + "  [ " + company["start"] + " - " + company["end"] + " ]"+ "<br/>";
+                });
+                document.getElementById("print").innerHTML = textnode; 
+            }
+            function totalEmployees()
+            {
+                const totalYears = companies.reduce(
+                function(total, company) 
+                {
+                    return total+company.employees;
+                }, 0);
+                document.getElementById("print").innerHTML = totalYears; 
+            }
+            function chain()
+            {
+                let textnode=""; 
+                const combined = companies
+                .filter(company => company["start"]<"1985")
+                .sort((a, b) => b.start - a.start)
+                .reduce(
+                function(total, company) 
+                {
+                    return total+company.employees;
+                }, 0);  
+                document.getElementById("print").innerHTML = combined; 
+            }
+            
+output(totalYears);
+
+        </script>
+      
+    </head>
+    <body>
+
+        <button onclick="printCompany();">Company Names & Categories</button>
+        <button onclick="printRetailCompany();">Print Retail Companies</button>
+        <button onclick="print80Company();">Print 80s companies</button>
+        <button onclick="printNames();">Print only Names</button>
+        <button onclick="printNamesWithDuration();">Print Names with Durations</button>
+        <button onclick="sortByStartYear();">Sort By Start Year</button>
+        <button onclick="totalEmployees();">Total Employees</button>
+        <button onclick="chain();">Chain</button>
+
+        <div>
+                <p id="print"></p>
+        </div>
+
+    </body>
+
+
+</html>
