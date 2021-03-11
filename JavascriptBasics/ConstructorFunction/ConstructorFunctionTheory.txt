@@ -1,0 +1,26 @@
+• A constructor is another way to create multiple similar objects with same
+properties and methods.
+• Constructors are like regular functions, but we use them with the new keyword.
+• There are two types of constructors:
+• built-in constructors such as Array and Object
+• custom constructors
+• It’s a convention to capitalize the name of constructors to distinguish them from
+regular functions.
+• Constructor need not be associated with a class as in Java, it is a way of object
+creation by itself.
+
+• this keyword
+• “this” is a property of the execution context and refers to the current object
+• In the global execution context, ”this” refers to the global object: the window object
+• new keyword
+• If you put the keyword new in front of a function call, the function is treated as a
+constructor.
+• This means that an object with the right prototype is automatically created, bound to
+“this” in the function, and returned at the end of the function.
+• Unexpected result if “new” is forgotten: you will be modifying the global object, window
+instead of the newly created object
+
+Missed new keyword: https://codepen.io/sbhilare/pen/VwvxEQZ?editors=0010
+• Explanation: (When we call the Book constructor without ”new”, ”this” inside the constructor points to Window (instead
+of myBook), and two global variables are created. However, when we call the function with ”new”, the context is switched
+from global (Window) to the instance. So, this correctly points to myBook. )
